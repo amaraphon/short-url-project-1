@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\ShortUrl;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class UrlController extends Controller
         $count = ShortUrl::count();
         //dd($count);
 
-        if ($count >= 10) {
+        if ($count >= 15) {
             return ('You have a limit quota');
         }
 
@@ -33,7 +34,7 @@ class UrlController extends Controller
             'long_url'=>$long_url,
             'short_url'=>$short_url
         ]);
-        return redirect('/')->with('success','บันทึกข้อมูลเรียบร้อยแล้ว');
+        return redirect('/')->with('success','SAVE SUCCESSFULLY');
     }
 
     public function randString() {
@@ -65,5 +66,14 @@ class UrlController extends Controller
             return redirect()->away($result->long_url);
         }
         return ('ไม่พบรหัส Short URL นี้');
+    }
+
+    public function delete($id)
+    {
+        //
+        $url = ShortUrl::findOrFail($id);
+        $url->delete();
+
+        return  response()->json(['status'=>'ลบข้อมูลเรียบร้อยแล้ว']);
     }
 }

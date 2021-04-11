@@ -17,5 +17,9 @@
 
 Route::get('/','UrlController@index');
 Route::get('/new','UrlController@create');
+Route::get('/limit','UrlController@create');
 Route::post('/save','UrlController@store');
 Route::get('/gt/{code}','UrlController@check');
+Route::delete('/delete/{id}','UrlController@delete');
+
+
