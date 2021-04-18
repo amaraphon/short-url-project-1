@@ -20,6 +20,7 @@
                 <table class="table table-strip">
                     <thead>
                     <tr>
+                        <th scope="col">Id</th>
                         <th scope="col">Long URL</th>
                         <th scope="col">Short URL</th>
                         <th scope="col">Create</th>
@@ -30,6 +31,7 @@
                     @foreach($urls as $url)
                         <tr>
                             <input type="hidden" class="delete_val_id" value="{{ $url->id }}">
+                            <td>{{ $url->id }}</td>
                             <td>{{ $url->long_url }}</td>
                             <td><a href="/gt/{{ $url->short_url }}" target="_blank">{{ $url->short_url }}</a></td>
                             <td>{{ $url->created_at }}</td>
